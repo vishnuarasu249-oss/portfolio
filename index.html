@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Professional Portfolio - vishnu portfolio</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #f5a623 0%, #50e3c2 100%);
+      min-height: 100vh;
+      animation: gradientBG 8s ease-in-out infinite alternate;
+    }
+    @keyframes gradientBG {
+      0% { background: linear-gradient(135deg, #f5a623 0%, #50e3c2 100%);}
+      100% { background: linear-gradient(135deg, #7b4397 0%, #dc2430 100%);}
+    }
+    .navbar {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .nav-link {
+      font-weight: 500;
+      color: #222;
+      transition: color .2s;
+    }
+    .nav-link.active, .nav-link:hover {
+      color: #007bff;
+    }
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      object-fit: cover;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+      animation: pop-in .8s cubic-bezier(.4,2,.3,1) 1;
+    }
+    @keyframes pop-in {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .section {
+      display: none;
+      animation: fadeIn .8s;
+    }
+    .section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .skill-bar {
+      position: relative;
+      background: #f1f1f1;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .skill-level {
+      height: 28px;
+      color: #fff;
+      text-align: right;
+      padding-right: 16px;
+      font-weight: 500;
+      border-radius: 24px;
+      line-height: 28px;
+      background: linear-gradient(90deg, #50e3c2, #f5a623, #7b4397, #dc2430);
+      animation: slideInSkill 1s cubic-bezier(.4,2,.3,1);
+    }
+    @keyframes slideInSkill {
+      from { width: 0;}
+      to { width: var(--width);}
+    }
+    .animated-gradient-text {
+      background: linear-gradient(90deg, #f5a623, #50e3c2, #7b4397, #dc2430);
+      background-size: 200% 200%;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: gradientMove 3s linear infinite;
+      font-weight: bold;
+    }
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    /* Responsive */
+    @media (max-width: 576px) {
+      .profile-pic { width: 80px; height: 80px;}
+      .section { padding: 12px;}
+    }
+    /* Decorative Graphics */
+    .graphic-bg {
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle at 40% 40%, #f5a62399, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite alternate;
+    }
+    .graphic-bg2 {
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle at 60% 60%, #50e3c288, transparent 80%);
+      z-index: 0;
+      pointer-events: none;
+      animation: float 9s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes float {
+      from { transform: translateY(0) scale(1);}
+      to { transform: translateY(16px) scale(1.08);}
+    }
+    .contact-icon {
+      font-size: 1.5rem;
+      margin-right: 10px;
+      color: #7b4397;
+      transition: color .2s;
+    }
+    .contact-icon:hover {
+      color: #dc2430;
+    }
+  </style>
+</head>
+<body>
+  <div class="graphic-bg"></div>
+  <div class="graphic-bg2"></div>
+  <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand animated-gradient-text fs-3" href="#">[Vishnuvaradhan]</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#" data-section="about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-section="skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-section="education">Study & Qualifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-section="contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="container py-5 position-relative" style="z-index:1;">
+    <!-- About Me -->
+    <section id="about" class="section active">
+      <div class="text-center mb-4">
+        <img src="img.jpg" alt="Profile" class="profile-pic mb-3 shadow-lg">
+        <h1 class="animated-gradient-text">Hello, I'm vishnu Varathan.T.K</h1>
+        <p class="lead fw-bold text-dark">Aspiring A SIMPLE UI/UX Designer & Creative Developer</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <p class="fs-5">
+            Welcome to portfolio!<b> 1.Programming Languages:</b> Students learn to code in various languages like Python, Java, C++, and others to develop software and applications.
+<b>2.Web Developer:</b> Creating websites and web applications.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="text-center mb-4">
+        <h2 class="animated-gradient-text"><i class="bi bi-lightning-charge"></i> My Skills</h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <div class="mb-3">
+            <div class="d-flex justify-content-between">
+              <span>PYTHON</span>
+              <span>95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" style="--width:95%; width:95%;">&nbsp;</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between">
+              <span>HTML5, CSS3</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" style="--width:90%; width:90%;">&nbsp;</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between">
+              <span>DATA STRUCTURES</span>
+              <span>80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" style="--width:80%; width:80%;">&nbsp;</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between">
+              <span>DATA BASE MANAGEMENT SYSTEMS</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" style="--width:85%; width:85%;">&nbsp;</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="d-flex justify-content-between">
+              <span>DATA SCIENCE</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-level" style="--width:90%; width:90%;">&nbsp;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section">
+      <div class="text-center mb-4">
+        <h2 class="animated-gradient-text"><i class="bi bi-mortarboard"></i> Studying & Qualifications</h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <ul class="list-group mb-3 shadow-sm">
+            <li class="list-group-item d-flex flex-column flex-md-row align-items-md-center mb-2" style="background:rgba(80,227,194,0.12)">
+              <div class="flex-grow-1">
+                <strong>Bachelor of engineering Computer Science</strong><br>
+                <span>anna University, 2025 - Present</span>
+              </div>
+              <span class="badge bg-gradient rounded-pill" style="background: linear-gradient(90deg,#f5a623,#7b4397); color: #fff;">Current</span>
+            </li>
+            <li class="list-group-item d-flex flex-column flex-md-row align-items-md-center mb-2" style="background:rgba(245,166,35,0.12)">
+              <div class="flex-grow-1">
+                <strong>HSE</strong><br>
+                <span>AKT HIGHER SECONDARY SCHOOL, 2021 
+Percentage :60</span>
+              </div>
+              <span class="badge bg-gradient rounded-pill" style="background: linear-gradient(90deg,#50e3c2,#f5a623); color: #fff;">Completed</span>
+            </li>
+            <li class="list-group-item d-flex flex-column flex-md-row align-items-md-center mb-2" style="background:rgba(123,67,151,0.12)">
+              <div class="flex-grow-1">
+                <strong>SSLC</strong><br>
+                <span>AKT HIGHER SECONDARY SCHOOL-2020 percentage:57</span>
+              </div>
+              <span class="badge bg-gradient rounded-pill" style="background: linear-gradient(90deg,#dc2430,#7b4397); color: #fff;">Completed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="text-center mb-4">
+        <h2 class="animated-gradient-text"><i class="bi bi-person-lines-fill"></i> Contact Details</h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <div class="mb-3 d-flex align-items-center">
+            <i class="bi bi-envelope contact-icon"></i>
+            <span class="fs-5">vishnuarasu249@gmail.com</span>
+          </div>
+          <div class="mb-3 d-flex align-items-center">
+            <i class="bi bi-telephone contact-icon"></i>
+            <span class="fs-5">+91 9092695116</span>
+          </div>
+          <div class="mb-3 d-flex align-items-center">
+            <i class="bi bi-whatsapp contact-icon"></i>
+            <span class="fs-5">+91 9092695116</span>
+          </div>
+          <div class="mb-3 d-flex align-items-center">
+            <i class="bi bi-instagram contact-icon"></i>
+            <a href="https://www.instagram.com/varathan5955?igsh=MTRmcmd3YTNvNnVxcw==" class="fs-5 text-decoration-none" target="_blank">@ Varathan 5955</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Menu navigation with animation
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        let section = this.getAttribute('data-section');
+        document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+        document.getElementById(section).classList.add('active');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      });
+    });
+  </script>
+</body>
+</html>
